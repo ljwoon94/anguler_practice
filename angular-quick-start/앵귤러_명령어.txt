@@ -1,0 +1,72 @@
+asd프로젝트 생성
+ng new asd
+
+서버 실행
+ng serve
+
+컴포넌트란?
+독립적으로 동작 가능한 UI요소
+HTML 템플릿, 스타일과 로직을 결합 (형태표현과 기능 제어)
+DOM 과 같은 트리구조로 UI 요소들을 구성
+W3C 표준 웹 컴포넌트 기술을 기반으로 함
+-html Templates
+-html imports
+html 템플릿을 임포트해 사용가능
+-shadow DOM
+dom을 직접 정의해 사용가능
+-custom elements
+태그 직접 정의해 사용가능
+
+컴포넌트 하나당 파일 하나
+컴포넌트에는 2가지가 있다
+하나 데코레이터 (엘리먼트, 템플릿, 스타일) 표현하는 계층
+둘 실제 컴포넌트 클래스 안에 있는 로직     동작하는 계층
+
+--------간단한 컴포넌트 만들기--------------
+import { Component } from "@angular/core";
+
+// 클래스위에 데코레이터 추가
+@Component({
+    // selector : 이름    태그생성
+    selector : 'app-test',
+    // template : 태그안에 들어갈 내용
+    template:`
+    <p>오늘은 첫 세미나 날입니다.</p>
+    `
+})
+export class TestComponent {
+
+}
+-----------------------------------------
+
+데코레이터를 만들어도 바로 사용할 수 없다.
+app.module.ts 라는 곳에 사용할 컴포넌트를 등록해야한다.
+
+import { AppComponent } from './app.component';
+import { TestComponent } from './test.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    // TestComponent 등록
+    TestComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+------------------정리-----------------------------
+컴포넌트 만들기 정리
+우선 test.component.ts 파일 생성
+TestComponent 클래스를 만들고 위에
+@Component({}) 데코레이터 추가
+데코레이터 안에는 selector, template을 적는다.
+selector은 엘리멘트 이름, template엔 내용을 적는다.
+그 후에 app.module.ts 라는 곳으로 들어가 사용할 컴포넌트 등록 
+
+--------------------------------------------------

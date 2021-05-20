@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-sample3',
@@ -8,10 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 export class Sample3Component implements OnInit {
 
   @Input() test;
+  @Output() custom = new EventEmitter();
+
+  disabled = true;
+
 
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      this.disabled = false;
+      this.custom.emit();
+    }, 5000);
   }
 
 }

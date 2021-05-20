@@ -10,4 +10,8 @@ export class AppComponent {
   names = [
     '사과','딸기','수박'
   ];
+
+  custom(){
+    console.log('custom');
+  }
 }

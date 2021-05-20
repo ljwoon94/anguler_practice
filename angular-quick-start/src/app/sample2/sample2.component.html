@@ -7,4 +7,9 @@
     ($event) 내장로컬변수
     -->
     <button (click)="click($event)">눌러주세요</button>
+    <!-- [(ngModel)] 양방향 데이터 바인딩 지원 
+         실시간으로 모델과 뷰가 같아짐.
+         [(ngModel)] = "name"> 맴버변수 name과 같아진다.
+    -->
+    <input type="text" [(ngModel)] = "name">
 </p>

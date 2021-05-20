@@ -5,5 +5,14 @@
   <app-test></app-test>
   <app-sample1></app-sample1>
   <app-sample2></app-sample2>
+  <!-- 부모 컴포넌트가 자식컴포넌트에게 데이터를 줌 -->
+  <!-- 그냥 문자열로 데이터를 줄때 -->
+  <!-- <app-sample3 test="hello"></app-sample3> -->
+  <!-- 변수로 데이터를 줄때 -->
+  <!-- <app-sample3 [test]="title"></app-sample3> -->
+  <!-- 배열로 데이터를 내보낼때 사용 *ngFor -->
+  <!-- names라는 배열을 let name에 다 넣어두고 -->
+  <!-- 자식 컴포넌트인 test에 넣어둠 -->
+  <app-sample3 *ngFor="let name of names" [test]="name"></app-sample3>
 </div>
 

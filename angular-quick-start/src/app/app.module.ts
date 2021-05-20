@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// 양방향 테이터 바인딩 사용에 필요  [(ngModel)]
+import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +21,9 @@ import { Sample3Component } from './sample3/sample3.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // 양방향 데이터 바인딩시 필요
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

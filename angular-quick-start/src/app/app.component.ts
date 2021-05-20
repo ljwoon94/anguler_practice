@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '앵귤러 연습 시작!';
+  names = [
+    '사과','딸기','수박'
+  ];
 }

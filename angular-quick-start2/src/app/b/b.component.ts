@@ -14,6 +14,7 @@ export class BComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   click(){
     this.one.name =  'BBB';
   }

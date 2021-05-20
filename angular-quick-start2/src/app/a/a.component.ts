@@ -14,6 +14,7 @@ export class AComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   click(){
     this.one.name =  'AAA';
   }

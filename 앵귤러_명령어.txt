@@ -185,3 +185,8 @@ routerLinkActive 에 class 설정
 경로 매칭을 정확히 하고 싶을때,
 routerLinkActiveOpions 처리
 {exact: true}
+
+Routes에 :name 과 같이 설정하기
+사용하는 컴포넌트에서 ActivatedRoute 주입
+주입된 서비스 이용해서 :name 가져오기
+동기 snapshot         비동기 rx

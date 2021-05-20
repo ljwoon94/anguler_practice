@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class OneService {
 
-  name = '나는 서비스 입니다.';
+  name = '나는 서비스';
 
   constructor() { }
 }

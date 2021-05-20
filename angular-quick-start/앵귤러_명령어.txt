@@ -70,3 +70,46 @@ selector은 엘리멘트 이름, template엔 내용을 적는다.
 그 후에 app.module.ts 라는 곳으로 들어가 사용할 컴포넌트 등록 
 
 --------------------------------------------------
+컴포넌트 생성
+ng g c sample1 -it -is
+
+g generate c component 파일이름 -it --inline-template --inline -style
+
+app.module.ts 곳에 자동으로 컴포넌트가 등록된다.
+
+인라인을 사용하기 싫으면 디폴트 입력하면 된다.
+ng g c sample2
+----------------------------------------------------
+angular.json 에 apps에 "prefix": "app"을 다른걸로 변경하면
+컴포넌트 생성 시 자동으로 생기는 selector 태그이름의 접두사를 바꾸기 가능하다.
+
+------------------------------------------------------
+
+클래스에 name = JeongWoon; 이라고 적어두면 맴버변수에 등록됨
+sample2.component.html에 {{name}}이라고 적으면
+JeongWoon을 불러오기 가능
+--------------------------------------------------------
+
+앵귤러는 데이터와 뷰로 나뉨. 데이터가 바뀌면 뷰는 자동으로 바뀐다.
+데이터를 바꾸려면 사용자의 입력이 필요하다. 예외) electron
+
+사용자가 입력함과 동시에 뷰를 바꾸려면 양방향 데이터 바인딩 필요.
+
+---------------------------------------------------------
+ error TS7006: Parameter 'event' implicitly has an 'any' type.
+ 가 나오면 tsconfig.json 에 "compilerOptions" "noImplicitAny": false 추가
+
+
+ --------------------------------------------------------
+ 함수 만들기 
+ 클래스 밑에 함수 선언
+ click(e){
+    console.log(e);
+    this.name = '하하하하';
+ }
+ html에 넣으면 <button> 을 넣으면함수 실행된다.
+  
+  (click) 은 자바스크립트의 onclick과 같다
+  click()은 함수다.
+  ($event) 내장로컬변수
+ <button (click)="click($event)">눌러주세요</button>

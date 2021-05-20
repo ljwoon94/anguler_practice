@@ -161,3 +161,27 @@ ng generate
 
 -------------------------------------------------------
 dependency injection
+
+-------------------------------------------------------
+RouterModule
+
+라우터 설정
+RouterModule 추가
+Route 셋팅
+=>HomeComponent
+=>about => AboutComponent
+
+app 모듈에 Router import
+ng serve
+
+app.module.ts에 imports: RouterModule 추가
+
+탬플릿에서 a 태그를 추가
+href => RouterLink
+현재 경로일때,
+routerLinkActive 에 class 설정
+해당class에 스타일적용
+
+경로 매칭을 정확히 하고 싶을때,
+routerLinkActiveOpions 처리
+{exact: true}

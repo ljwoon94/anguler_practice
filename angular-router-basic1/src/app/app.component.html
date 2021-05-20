@@ -1,5 +1,7 @@
-<div style="text-align: center;">
-  Welcome to {{title}}!
-</div>
-
+<nav>
+  <!-- routerLinkActive="active"> 가 실행되면 css 적용 -->
+  <!-- [routerLinkActiveOptions]="{exact: true}" 링크가 정확해야 이동됨? -->
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">home</a>
+  <a routerLink="/about" routerLinkActive="active">about</a>
+</nav>
 <router-outlet></router-outlet>

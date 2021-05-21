@@ -1,0 +1,22 @@
+<div style="text-align: center;">
+  <app-helloworld></app-helloworld>
+  이게 맞나?
+<button  (click)="output()">
+    버튼
+</button>
+<button  (click)="output2()">
+    버튼
+</button>
+
+
+<h1>GET & SET</h1>
+<div *ngFor="let student of students">
+    <app-getset [student]='student'></app-getset>
+    
+</div>
+
+<h1>ngOnChange</h1>
+<div *ngFor="let student of students">
+    <app-ng-on-change [student]='student'></app-ng-on-change> 
+</div>
+

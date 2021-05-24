@@ -22,6 +22,7 @@ export class RxjsComponent implements OnInit {
     // this.dataService.students$ 데이터 스토어에 저장된 현재값을 subscribe를 통해 불러온다.
     this.dataService.students$.subscribe(studentsInfo => this.students = studentsInfo)
     console.log(this.students);
+    //뭐가 문제였지?
   }
 
 }

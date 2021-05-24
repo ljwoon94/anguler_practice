@@ -12,7 +12,11 @@ export class AppComponent {
   
   title = 'angular-practice1';
   students:any;
+
+  // rxjs2에서 사용할 students
+  _students:any;
   
+
   output(){
     this.students = studentsInfo;
     console.log(this.students)
@@ -20,6 +24,10 @@ export class AppComponent {
   output2() {
     this.students = studentsInfo2;
     console.log(this.students)
+  }
+
+  output4(){
+    this.dataService.students$.subscribe(studentsInfo => this._students = studentsInfo)
   }
   
   // Data Store 불러오기

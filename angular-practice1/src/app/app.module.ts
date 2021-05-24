@@ -7,6 +7,7 @@ import { HelloworldComponent } from './helloworld/helloworld.component';
 import { GetsetComponent } from './getset/getset.component';
 import { NgOnChangeComponent } from './ng-on-change/ng-on-change.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { Rxjs2Component } from './rxjs2/rxjs2.component';
 
 
 
@@ -16,7 +17,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     HelloworldComponent,
     GetsetComponent,
     NgOnChangeComponent,
-    RxjsComponent
+    RxjsComponent,
+    Rxjs2Component
   ],
   imports: [
     BrowserModule,

@@ -11,12 +11,21 @@ import { studentsInfo2 } from './studentsInfo2';
 export class AppComponent {
   
   title = 'angular-practice1';
+  // SET, ngOnChange에서 사용할 students
   students:any;
 
-  // rxjs2에서 사용할 students
+  // rxjs2에서 사용할 _students
   _students:any;
   
-
+  // Data Store 불러오기
+  constructor(public dataService: DataService){ }
+  
+  ngOnInit(){
+    // Data Store의 함수 불러오기
+    // 서비스에 함수가 정의 되어있다.
+    this.dataService.updateData(studentsInfo);
+    
+  }
   output(){
     this.students = studentsInfo;
     console.log(this.students)
@@ -28,17 +37,8 @@ export class AppComponent {
 
   output4(){
     this.dataService.students$.subscribe(studentsInfo => this._students = studentsInfo)
-  }
-  
-  // Data Store 불러오기
-  constructor(public dataService: DataService){ }
-  
-  ngOnInit(){
-    // Data Store의 함수 불러오기
-    // 서비스에 함수가 정의 되어있다.
-    this.dataService.updateData(studentsInfo);
     
   }
-
+  
 
 }

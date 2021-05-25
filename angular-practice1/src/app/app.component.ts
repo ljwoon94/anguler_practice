@@ -16,6 +16,7 @@ export class AppComponent {
 
   // rxjs2에서 사용할 _students
   _students:any;
+
   
   // Data Store 불러오기
   constructor(public dataService: DataService){ }
@@ -37,7 +38,7 @@ export class AppComponent {
 
   output4(){
     this.dataService.students$.subscribe(studentsInfo => this._students = studentsInfo)
-    
+  
   }
   
 

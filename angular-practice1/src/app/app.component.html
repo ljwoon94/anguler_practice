@@ -16,3 +16,11 @@
     <app-ng-on-change [student]='student'></app-ng-on-change> 
 </div>
 
+<h1>rxjs</h1>
+<app-rxjs></app-rxjs>
+
+<h1>rxjs2</h1>
+<button (click)="output4()">버튼</button>
+<div *ngFor="let student of _students">
+    <app-rxjs2 [student]='student' ></app-rxjs2> 
+</div>

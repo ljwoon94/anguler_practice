@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { of, pipe } from 'rxjs';
 import { DataService } from '../data.service';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
@@ -24,13 +23,11 @@ export class RxjsComponent implements OnInit {
     // this.dataService.students$ 데이터 스토어에 저장된 현재값을 subscribe를 통해 불러온다.
     
     
-    const students90 = this.dataService.students$.pipe(
-      filter((v:any)=> v.score >= 90),
-      map((v:any) => v +"학생")
-    );
-    students90.subscribe(v =>this.students = v);
-    //this.dataService.students$.subscribe(studentsInfo => this.students = studentsInfo)
-    // console.log(this.students);
+    this.dataService.students$.pipe(
+      map(v => v.filter((x:any) => x.score > 90))
+    ).subscribe(v => this.students = v)
+    
+  
 
   }
 

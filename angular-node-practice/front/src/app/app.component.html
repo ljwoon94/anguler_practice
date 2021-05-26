@@ -6,7 +6,7 @@
 <button (click)="output2()">버튼</button>
 
 <div *ngFor="let student of _students1 ">
-    <app-set [student]="student"></app-set>
+    <app-set [student]="student" (output)="outputName($event)"></app-set>
 </div>
 
 <h1>ngOnChange</h1>

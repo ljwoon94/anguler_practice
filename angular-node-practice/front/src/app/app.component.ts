@@ -25,10 +25,11 @@ export class AppComponent implements OnInit{
       console.log(res.msg)
       this.hello = res.msg
       //(res) => console.log(res)
+      
     });
 
     // data store에 넣을 학생 정보 불러오기
-    this.http.get('/api/ngonchange').subscribe((res: any) => {
+    this.http.get('/api/rxjs').subscribe((res: any) => {
       this.students = res
       // Data Store의 함수 불러오기
       // 서비스에 함수가 정의 되어있다.
@@ -58,5 +59,10 @@ export class AppComponent implements OnInit{
 
   output3(){
     this.dataService.students$.subscribe(students => this._students2 = students)
+  }
+
+  outputName(state:any){
+    console.log("state"+state);
+    this.hello = state;
   }
 }

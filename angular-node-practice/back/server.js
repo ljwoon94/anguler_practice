@@ -33,7 +33,7 @@ app.get('/api/set2',(req,res) => {
     return res.send(studentsInfo2.studentsInfo2);
 })
 
-app.get('/api/ngonchange', (req, res)=>{
+app.get('/api/rxjs', (req, res)=>{
     console.log('server in');
     return res.send(studentsInfo.studentsInfo);
 })

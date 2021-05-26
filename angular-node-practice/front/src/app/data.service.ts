@@ -12,5 +12,11 @@ export class DataService {
     // students$ 에 현재값을 저장한다.
     students$ = this.studentsInfoSource.asObservable();
 
-  constructor() { }
+    constructor() { }
+
+    // 파라미터 값을 studentsInfoSource에 dataStream으로 저장
+    updateData(students: any) {
+      console.log('dataStroage',students);
+      this.studentsInfoSource.next(students);
+   }
 }

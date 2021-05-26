@@ -1,1 +1,15 @@
 {{hello}}
+
+
+<h2>set</h2>
+<button (click)="output1()">버튼</button>
+<button (click)="output2()">버튼</button>
+
+<div *ngFor="let student of students ">
+    <app-set [student]="student"></app-set>
+</div>
+
+<h1>ngOnChange</h1>
+<div *ngFor="let student of students">
+    <app-ng-on-change [student]='student'></app-ng-on-change> 
+</div>

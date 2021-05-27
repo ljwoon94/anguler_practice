@@ -8,6 +8,8 @@ import { SetComponent } from './set/set.component';
 import { NgOnChangeComponent } from './ng-on-change/ng-on-change.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { Rxjs2Component } from './rxjs2/rxjs2.component';
+import { SignupComponent } from './signup/signup.component';
+import { ArouterComponent } from './arouter/arouter.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { Rxjs2Component } from './rxjs2/rxjs2.component';
     SetComponent,
     NgOnChangeComponent,
     RxjsComponent,
-    Rxjs2Component
+    Rxjs2Component,
+    SignupComponent,
+    ArouterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { DataService } from './data.service';
 @Component({
@@ -29,7 +30,11 @@ export class AppComponent implements OnInit{
   }
 
 
-  constructor(private http: HttpClient, public dataService: DataService) { }
+  constructor(
+    private http: HttpClient, 
+    public dataService: DataService,
+    private router: Router,   
+  ) { }
 
   ngOnInit(): void {
     // hello world 불러오기
@@ -75,20 +80,25 @@ export class AppComponent implements OnInit{
     console.log("state"+state);
     this.hello = state;
   }
-
+  //GET 방식
   getRequest(){
-    //Get 방식
     const getData = this.getData;
     this.http.get('/api/get',{ params : getData }).subscribe((res: any) => {
         console.log(res);
     });
   }
-
+  //POST 방식
   postRequest(){
-    //post 방식
     const postData = this.postData;
     this.http.post('/api/post', postData ).subscribe((res: any) => {
       console.log(res);
     });
   }
+
+  //signup로 이동
+  gotoSignUp(){
+    console.log('move');
+    this.router.navigate(['signup']);
+  }
+
 }

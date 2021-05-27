@@ -1,1 +1,10 @@
 <p>signup works!</p>
+
+<form #userForm="ngForm" (ngSubmit)="onNgSubmit(userForm)" novalidate>
+    이름 : <input type="text" name="name" ngModel > <br>
+    나이 : <input type="text" name="age" ngModel > <br>
+    이메일 : <input type="text" name="email" ngModel > <br>
+    <button>등록</button>
+</form>
+
+

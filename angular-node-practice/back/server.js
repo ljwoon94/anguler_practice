@@ -4,18 +4,25 @@ const http = require('http');
 const server = http.createServer(app);
 const path = require('path');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const fs = require('fs');
 
+
+
+// mongoDB 주소
+const db_url = 'mongodb+srv://admin:roottoor@mongodbtutorial.fvm0n.mongodb.net/user?retryWrites=true&w=majority';
 const port= 3000;
 
 const data = {msg :'Hello World'}
 
 const studentsInfo = require('./studentsInfo');
 const studentsInfo2 = require('./studentsInfo2');
+const SignUpModel = require('./models/signup');
 
 app.use(express.static(path.join(__dirname + '/public')));
 
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 // cors proxy 이슈 해결
 //https://gompro.postype.com/post/732269
 app.use(cors());
@@ -51,6 +58,29 @@ app.post('/api/post', (req, res)=>{
     console.log(req.body);
     return res.send(req.body);
 })
+
+// 회원가입
+app.post('/api/post/signup', (req, res)=>{
+    console.log('----------post---------회원가입-------------');
+    console.log(req.body);
+    const signupUser = new SignUpModel({
+        name : req.body.name,
+        age : req.body.age,
+        email : req.body.email,
+    })
+    signupUser.save((err)=>{
+        if(err) throw console.log(err)
+            res.send(req.body);
+    })
+    
+})
+
+// CONNECT TO MONGODB SERVER
+mongoose
+  .connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+  .then(() => console.log('Successfully connected to mongodb'))
+  .catch(e => console.error(e));
+
 
 server.listen(port, ()=> {
     console.log(`Server is running ${port}`);

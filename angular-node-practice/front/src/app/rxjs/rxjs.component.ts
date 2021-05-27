@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class RxjsComponent implements OnInit {
 
+
+  
   @Input() student:any;
   @Output() output = new EventEmitter();
 

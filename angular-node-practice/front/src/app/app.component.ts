@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { DataService } from './data.service';
@@ -16,6 +16,18 @@ export class AppComponent implements OnInit{
   _students1: any;
   //output3() 때(rxjs 방식) 쓰는 students
   _students2: any;
+
+  getData = {
+    name : 'get',
+    age : 26,
+    email : 'get@get.get'
+  }
+  postData = {
+    name : 'post',
+    age : 28,
+    email : 'post@post.post'
+  }
+
 
   constructor(private http: HttpClient, public dataService: DataService) { }
 
@@ -35,8 +47,6 @@ export class AppComponent implements OnInit{
       // 서비스에 함수가 정의 되어있다.
       this.dataService.updateData(this.students);
     });
-   
-    
     
   }
 
@@ -64,5 +74,21 @@ export class AppComponent implements OnInit{
   outputName(state:any){
     console.log("state"+state);
     this.hello = state;
+  }
+
+  getRequest(){
+    //Get 방식
+    const getData = this.getData;
+    this.http.get('/api/get',{ params : getData }).subscribe((res: any) => {
+        console.log(res);
+    });
+  }
+
+  postRequest(){
+    //post 방식
+    const postData = this.postData;
+    this.http.post('/api/post', postData ).subscribe((res: any) => {
+      console.log(res);
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
 
@@ -8,6 +8,9 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./rxjs2.component.css']
 })
 export class Rxjs2Component implements OnInit {
+  
+  @Output() output = new EventEmitter<any>();
+  
   students:any;
 
   constructor(public dataService: DataService) { }
@@ -31,5 +34,13 @@ export class Rxjs2Component implements OnInit {
       map(v => v.filter((x:any) => x.score > 90 ))
     ).subscribe(v => this.students = v)
    
+  }
+  outputName(student:any){
+    this.output.emit(student.name);
+    console.log(student.score);
+  }
+  outputScore(student:any){
+    this.output.emit(student.score);
+    console.log(student.score);
   }
 }

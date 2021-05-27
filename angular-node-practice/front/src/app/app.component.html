@@ -6,19 +6,19 @@
 <button (click)="output2()">버튼</button>
 
 <div *ngFor="let student of _students1 ">
-    <app-set [student]="student" (output)="outputName($event)"></app-set>
+    <app-set [student]="student" (output)='outputName($event)'></app-set>
 </div>
 
 <h1>ngOnChange</h1>
 <div *ngFor="let student of _students1">
-    <app-ng-on-change [student]='student'></app-ng-on-change> 
+    <app-ng-on-change [student]='student' (output)='outputName($event)'></app-ng-on-change> 
 </div>
 
 <h1>rxjs</h1>
 <button (click)="output3()">버튼</button>
 <div *ngFor="let student of _students2">
-    <app-rxjs [student]='student' ></app-rxjs> 
+    <app-rxjs [student]='student' (output)='outputName($event)'></app-rxjs> 
 </div>
 
 <h1>rxjs2 (pipe, filter)</h1>
-<app-rxjs2></app-rxjs2>
+<app-rxjs2 (output)='outputName($event)'></app-rxjs2>

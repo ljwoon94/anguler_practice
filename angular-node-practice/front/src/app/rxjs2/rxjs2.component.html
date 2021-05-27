@@ -1,5 +1,7 @@
 <button (click)='output4()'>버튼</button>
 
 <div *ngFor="let student of students">
-    {{student.name}} {{student.score}}
+    {{student.name}} {{student.score}} 
+    <button (click)='outputName(student)'>이름</button>
+    <button (click)='outputScore(student)'>점수</button>
 </div>  

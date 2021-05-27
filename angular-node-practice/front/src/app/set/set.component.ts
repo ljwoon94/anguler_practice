@@ -18,12 +18,18 @@ export class SetComponent implements OnInit {
   }
   
   constructor() { }
+  
+  ngOnInit(): void {
+    console.log(this._student);
+  }
+
   outputName(_student:any){
     this.output.emit(_student.name);
     console.log("outputName",_student.name)
   }
-  ngOnInit(): void {
-    console.log(this._student);
+  outputScore(_student:any){
+    this.output.emit(_student.score);
+    console.log("outputScore",_student.score)
   }
 
 }

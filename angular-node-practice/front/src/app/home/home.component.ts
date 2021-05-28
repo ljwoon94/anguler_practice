@@ -92,9 +92,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  //signup로 이동
-  gotoSignUp(){
-    console.log('move');
-    this.router.navigate(['signup']);
-  }
+  // //signup로 이동
+  // gotoSignUp(){
+  //   console.log('move');
+  //   this.router.navigate(['signup']);
+  // }
 }

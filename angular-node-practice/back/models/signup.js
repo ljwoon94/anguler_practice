@@ -16,5 +16,5 @@ const signupSchema = new mongoose.Schema({
 
 // 모듈 정의 후 호출 가능하게 함.
 
-const SignUpModel = mongoose.model('User', signupSchema);
-module.exports = SignUpModel;
+const User = mongoose.model('User', signupSchema);
+module.exports = User;

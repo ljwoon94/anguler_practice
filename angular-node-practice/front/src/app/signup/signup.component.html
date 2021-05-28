@@ -7,4 +7,6 @@
     <button>등록</button>
 </form>
 
-
+<ul *ngFor="let user of _userList">
+    {{user.name}} {{user.age}} {{user.email}}
+</ul>

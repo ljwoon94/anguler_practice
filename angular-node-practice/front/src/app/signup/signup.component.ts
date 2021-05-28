@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,17 +10,33 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   _userForm:any;
+  _userList:any;
 
-
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router, 
+  ) { }
 
   ngOnInit(): void {
+    this.http.get('/api/get/list').subscribe((res: any) => {
+      //console.log(res);
+      this._userList = res;
+    });
   }
   
   onNgSubmit(userForm: NgForm) {
     //console.log(userForm.value);
     this.http.post('/api/post/signup', userForm.value ).subscribe((res: any) => {
-      console.log("회원가입",res);
+      if(res.result == 'done'){
+        this.router.navigate(['/signup'])
+          .then(() => {
+            window.location.reload();
+          });
+      }
+    },
+    err => {
+      console.log(err);
+      alert('에러');
     });
   }
 

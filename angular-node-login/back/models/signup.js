@@ -11,7 +11,7 @@ const signupSchema = new mongoose.Schema({
     email: { type: String, required: false },
     
 }, {
-    timestamps: { createdAt: true, updatedAt: false }
+    timestamps: { createdAt: true, updatedAt: true }
 });
 
 const User = mongoose.model('User', signupSchema);

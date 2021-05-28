@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  _userForm:any;
   _userList:any;
 
   constructor(
@@ -28,7 +27,9 @@ export class SignupComponent implements OnInit {
     //console.log(userForm.value);
     this.http.post('/api/post/signup', userForm.value ).subscribe((res: any) => {
       if(res.result == 'done'){
+        // 함수가 실행될때 라우터로 페이지 이동
         this.router.navigate(['/signup'])
+        //이동했을때 새로고침
           .then(() => {
             window.location.reload();
           });

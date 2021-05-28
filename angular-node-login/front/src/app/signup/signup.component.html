@@ -1,0 +1,9 @@
+<h1>회원가입</h1>
+
+<form #signupForm="ngForm" (ngSubmit)="onSignUp(signupForm)" novalidate>
+    아이디: <input type="text" name="id" ngModel><br>
+    비밀번호: <input type="password" name="password" ngModel><br>
+    이름: <input type="text" name="name" ngModel><br>
+    이메일: <input type="text" name="email" ngModel><br>
+    <button> 회원가입 </button>
+</form>

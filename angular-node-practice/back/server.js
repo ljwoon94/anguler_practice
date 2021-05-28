@@ -65,7 +65,7 @@ app.get('/api/get/list', (req, res)=>{
     console.log('----------get---------목록-------------');
     User.find({})
         .then((users) => {
-            console.log(users);
+            //console.log(users);
             res.json(users);
         })
         .catch((err) => {

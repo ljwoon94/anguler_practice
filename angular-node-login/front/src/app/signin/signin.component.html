@@ -1,0 +1,8 @@
+<h1>로그인</h1>
+<form #loginForm="ngForm" (ngSubmit)="onLogIn(loginForm)" novalidate>
+    아이디: <input type="text" name="id" ngModel><br>
+    비밀번호: <input type="password" name="password" ngModel><br>
+    <button> 로그인 </button>
+</form>
+
+<button routerLink="/signup" routerLinkActive="active">회원가입</button>

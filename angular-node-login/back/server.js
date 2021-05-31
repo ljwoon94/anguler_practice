@@ -6,9 +6,10 @@ const path = require('path');
 const cors = require('cors');
 const mongoose =require('mongoose');
 const fs = require('fs');
+require('dotenv').config()
 
 // mongoDB 주소
-const db_url = 'mongodb+srv://admin:roottoor@mongodbtutorial.fvm0n.mongodb.net/login?retryWrites=true&w=majority';
+const db_url = process.env.DB_URL
 const User = require('./models/signup');
 const port= 3000;
 

@@ -18,6 +18,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(cors());
 
+app.post(
+    'api/post/login',
+    passport.authenticate('local', { session: false }),
+    (req, res) => {
+		const user = new User(req.user);
+		console.log(user);
+        try {
+
+			const token = await user.generateAccessToken();
+			// console.log('router token => ', token);
+			console.log('returned token to login comp, then move to main');
+			res.send({token});
+		} catch (e) {
+			console.log('login post error at routes/users.js');
+			res.status(500).send('internal Error');
+		}
+    }
+)
+
 app.post('/api/post/signup', (req, res)=>{
     //console.log(req.body);
     const signupUser = new User({

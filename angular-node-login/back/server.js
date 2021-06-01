@@ -6,7 +6,8 @@ const path = require('path');
 const cors = require('cors');
 const mongoose =require('mongoose');
 const fs = require('fs');
-require('dotenv').config()
+const passport = require('passport');
+require('./middlewares/passport')(passport);
 
 // mongoDB 주소
 const db_url = process.env.DB_URL
@@ -17,11 +18,28 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(cors());
+app.use(passport.initialize());
+
+app.get('/api/get/userInfo',(req, res)=>{
+    User.find({}, (err, users)=>{
+        if(err) return res.status(500).json({error: err});
+        if(!users) return res.status(404).json({error: 'user not found'});
+        res.json(users);
+    })
+})
+
+app.get('/api/get/userInfo/:id',(req, res)=>{
+    User.findOne({_id: req.params.id}, (err, user)=>{
+        if(err) return res.status(500).json({error: err});
+        if(!user) return res.status(404).json({error: 'user not found'});
+        res.json(user);
+    })
+})
 
 app.post(
-    'api/post/login',
+    '/api/post/login',
     passport.authenticate('local', { session: false }),
-    (req, res) => {
+    async (req, res) => {
 		const user = new User(req.user);
 		console.log(user);
         try {
@@ -31,8 +49,8 @@ app.post(
 			console.log('returned token to login comp, then move to main');
 			res.send({token});
 		} catch (e) {
-			console.log('login post error at routes/users.js');
-			res.status(500).send('internal Error');
+			console.log(e);
+			res.status(500).send(e);
 		}
     }
 )

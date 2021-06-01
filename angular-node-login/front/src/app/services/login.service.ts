@@ -58,4 +58,7 @@ export class LoginService {
     getUserid(): string {
       return this.jwtHelper.decodeToken(this.getToken())._id;
     }
+    getSigninId(): string {
+      return this.jwtHelper.decodeToken(this.getToken()).id;
+    }
 }

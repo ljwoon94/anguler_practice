@@ -32,7 +32,7 @@ app.get('/api/get/userInfo/:id',(req, res)=>{
     User.findOne({_id: req.params.id}, (err, user)=>{
         if(err) return res.status(500).json({error: err});
         if(!user) return res.status(404).json({error: 'user not found'});
-        res.json(user);
+        res.json(user);     
     })
 })
 

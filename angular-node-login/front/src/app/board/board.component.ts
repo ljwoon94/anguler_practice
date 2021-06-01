@@ -35,13 +35,12 @@ export class BoardComponent implements OnInit {
 		// get userid from token
 		this.userId = this.loginService.getUserid();
 		this.signInId = this.loginService.getSigninId();
-
+    console.log(this.signInId)
     let id : any = this.userId;
     
     this.http.get('/api/get/userInfo').subscribe((res: any) => {
       this.users = res
     });
-
     this.http.get(`/api/get/userInfo/${this.userId}`).subscribe((res: any) => {
       console.log('오홓홍',res);
       this.signInUser = res;

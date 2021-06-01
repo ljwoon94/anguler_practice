@@ -10,6 +10,7 @@ import { SignupComponent } from './signup/signup.component';
 import { BoardComponent } from './board/board.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { environment as env } from '../environments/environment';
+import { AuthGuardService, AuthRedirect } from './services/auth-guard.service';
 
 const TOKEN_NAME = env.tokenName;
 
@@ -32,13 +33,13 @@ const TOKEN_NAME = env.tokenName;
 				// allowedDomains: [],
 				// disallowedRoutes: [/api\/v1\/auth.*/] ---> regex는 --prod에서 오류 발생.
 				disallowedRoutes: [
-					'/api/login',
-					'/api/signup',
+					'/api/post/login',
+					'/api/post/signup',
 				]
 			}
 		}),
   ],
-  providers: [],
+  providers: [AuthGuardService,AuthRedirect],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

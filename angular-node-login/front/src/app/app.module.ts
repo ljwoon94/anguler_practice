@@ -29,10 +29,14 @@ const TOKEN_NAME = env.tokenName;
     JwtModule.forRoot({
 			config: {
 				// https://github.com/auth0/angular2-jwt
+        // tokenGetter은 로컬 스토리지에 토큰 값을 불러와
+        // 인증 된 요청(allowedDomains:[])은 알고 있고 
+        // 신뢰할 수있는 도메인에게 전송
 				tokenGetter,
 				// allowedDomains: [],
 				// disallowedRoutes: [/api\/v1\/auth.*/] ---> regex는 --prod에서 오류 발생.
-				disallowedRoutes: [
+				// disallowedRoutes 특정 경로에 대한 인증 헤더를 바꾸지 않으려면 여기에 나열
+        disallowedRoutes: [
 					'/api/post/login',
 					'/api/post/signup',
 				]

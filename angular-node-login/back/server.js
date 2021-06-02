@@ -22,6 +22,7 @@ app.use(cors());
 // passport 등록
 app.use(passport.initialize());
 
+// 회원정보 불러오기-------------------------------------------------------
 app.get('/api/get/userInfo',(req, res)=>{
     User.find({}, (err, users)=>{
         if(err) return res.status(500).json({error: err});
@@ -37,27 +38,42 @@ app.get('/api/get/userInfo/:id',(req, res)=>{
         res.json(user);     
     })
 })
-
+// 회원가입---------------------------------------------------------
 app.post('/api/post/signup', (req, res)=>{
-    //console.log(req.body);
-    const signupUser = new User({
-        id : req.body.id,
-        password : req.body.password,
-        name : req.body.name,
-        email : req.body.email,
-    })
-    signupUser.save()
-        .then((login) => {
-            //console.log(user);
-            res.send({
-                result: 'done'
-            })
+    // Form에서 온 데이터받기
+    const id = req.body.id;
+    // 중복데이터 확인
+    User.findOne({ id })
+        .then((user)=>{
+            if(user){
+                res.send({ result : 'fail'});
+            // 중복 데이터가 없으면 회원가입 시작 
+            } else {
+                const signupUser = new User({
+                    id : req.body.id,
+                    password : req.body.password,
+                    name : req.body.name,
+                    email : req.body.email,
+                })
+                signupUser.save()
+                    .then((login) => {
+                        //console.log(user);
+                        res.send({
+                            result: 'done'
+                        })
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        res.status(500).send(err);
+                    });
+            }
         })
         .catch((err) => {
-            res.status(500).send({
-
-            });
+            console.log(err);
+            res.status(500).send(err);
         });
+
+    //console.log(req.body);
 
 })
 
@@ -71,7 +87,6 @@ app.post(
 		const user = new User(req.user);
 		console.log(user);
         try {
-
 			const token = await user.generateAccessToken();
 			// console.log('router token => ', token);
 			console.log('returned token to login comp, then move to main');
@@ -82,7 +97,7 @@ app.post(
 		}
     }
 )
-
+// ------------------------------------------------------------
 // CONNECT TO MONGODB SERVER
 mongoose
   .connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })

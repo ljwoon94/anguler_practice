@@ -17,15 +17,16 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
   onSignUp(signupForm:NgForm){
-    console.log(signupForm.value);
     this.http.post('/api/post/signup', signupForm.value ).subscribe((res: any) => {
       if(res.result=='done'){
         this.router.navigate(['/'])
+      } else if (res.result='fail'){
+        alert('중복된 아이디입니다.');
       }
     },
     err => {
       console.log(err);
-      alert('에러');
+      alert('값을 입력해주세요');
     });
   }
 }

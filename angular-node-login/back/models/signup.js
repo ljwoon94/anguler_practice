@@ -15,7 +15,7 @@ const signupSchema = new mongoose.Schema({
     id: { type: String, required: true },
     password: { type: String, required: true },
     name: { type: String, required: true },
-    email: { type: String, required: false },
+    email: { type: String },
     
 }, {
     timestamps: { createdAt: true, updatedAt: true }

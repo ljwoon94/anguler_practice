@@ -18,6 +18,8 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(cors());
+
+// passport 등록
 app.use(passport.initialize());
 
 app.get('/api/get/userInfo',(req, res)=>{
@@ -35,25 +37,6 @@ app.get('/api/get/userInfo/:id',(req, res)=>{
         res.json(user);     
     })
 })
-
-app.post(
-    '/api/post/login',
-    passport.authenticate('local', { session: false }),
-    async (req, res) => {
-		const user = new User(req.user);
-		console.log(user);
-        try {
-
-			const token = await user.generateAccessToken();
-			// console.log('router token => ', token);
-			console.log('returned token to login comp, then move to main');
-			res.send({token});
-		} catch (e) {
-			console.log(e);
-			res.status(500).send(e);
-		}
-    }
-)
 
 app.post('/api/post/signup', (req, res)=>{
     //console.log(req.body);
@@ -77,6 +60,28 @@ app.post('/api/post/signup', (req, res)=>{
         });
 
 })
+
+// 로그인-------------------------------------------------------
+app.post(
+    '/api/post/login',
+    // passport로 form 입력값, db에 저장된 값이랑 비교
+    // passport.authenticate를 통해 local strategy 호출
+    passport.authenticate('local', { session: false }),
+    async (req, res) => {
+		const user = new User(req.user);
+		console.log(user);
+        try {
+
+			const token = await user.generateAccessToken();
+			// console.log('router token => ', token);
+			console.log('returned token to login comp, then move to main');
+			res.send({token});
+		} catch (e) {
+			console.log(e);
+			res.status(500).send(e);
+		}
+    }
+)
 
 // CONNECT TO MONGODB SERVER
 mongoose

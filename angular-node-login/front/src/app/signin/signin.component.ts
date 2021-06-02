@@ -22,13 +22,13 @@ export class SigninComponent implements OnInit {
   }
 
   onLogIn(loginForm:NgForm){
-    // this.http.post('/api/post/signin', loginForm.value )
-    //   .subscribe((res: any) => {})
+    // 로그인 폼 실행시 서비스로 이동
     this.loginService.login(loginForm.value).subscribe((data:any) => {
 			console.log('login Component => ', data);
 			this.router.navigate(['board']);
 		}, (err: any) => {
 			console.log('login Component Error => ', err);
+      alert('아이디와 비밀번호가 일치하지 않습니다.')
 		});
   }
 }
